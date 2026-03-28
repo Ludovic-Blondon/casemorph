@@ -1,0 +1,77 @@
+{
+  "name": "casemorph",
+  "version": "1.0.0",
+  "description": "Type-safe deep case transformation for objects — snake_case, camelCase, kebab-case, PascalCase, CONSTANT_CASE with full TypeScript inference",
+  "author": "Ludovic Blondon",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": ["dist", "README.md", "LICENSE", "CHANGELOG.md"],
+  "sideEffects": false,
+  "engines": {
+    "node": ">=20"
+  },
+  "keywords": [
+    "typescript",
+    "camelcase",
+    "snake-case",
+    "kebab-case",
+    "pascal-case",
+    "case-conversion",
+    "deep-transform",
+    "type-safe",
+    "object-keys",
+    "naming-convention",
+    "camelcase-keys",
+    "snakecase-keys"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "test:types": "vitest run --typecheck.only",
+    "lint": "biome lint .",
+    "format": "biome format --write .",
+    "format:check": "biome format .",
+    "check": "biome check .",
+    "check:fix": "biome check --fix .",
+    "typecheck": "tsc --noEmit",
+    "bench": "tsx benchmarks/bench.ts",
+    "size": "size-limit",
+    "prepublishOnly": "npm run check && npm run typecheck && npm run test && npm run build",
+    "ci": "npm run check && npm run typecheck && npm run test:coverage && npm run build && npm run size"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Ludovic-Blondon/casemorph.git"
+  },
+  "size-limit": [
+    {
+      "path": "dist/index.js",
+      "limit": "2 KB"
+    }
+  ],
+  "devDependencies": {
+    "@biomejs/biome": "^1",
+    "@size-limit/preset-small-lib": "^11",
+    "@vitest/coverage-v8": "^4",
+    "expect-type": "^1",
+    "size-limit": "^11",
+    "tinybench": "^3",
+    "tsup": "^8",
+    "tsx": "^4",
+    "typescript": "~5.8",
+    "vitest": "^4"
+  }
+}
